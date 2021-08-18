@@ -21,9 +21,13 @@ def get_access_token():
         'refresh_token': 'refresh_token'
     }
     
-    response = requests.post(url=url, params=params)
-    
-    return response.json().get("access_token")
+    try:
+        response = requests.post(url=url, params=params)
+        return response.json().get("access_token")
+    except Exception as e:
+        response = requests.post(url=url, params=params)
+        return response.json().get("access_token")
+
 
 
 @app.route('/users', methods=['GET'])

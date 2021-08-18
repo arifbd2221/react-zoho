@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 function App() {
 
@@ -8,6 +10,8 @@ function App() {
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [phone, setPhone] = useState('')
+
+    const [show, setShow] = useState(false);
 
     const [data, setData] = useState(null);
   
@@ -35,12 +39,13 @@ function App() {
     };
 
     useEffect(() => {
-
+        setShow(true);
         console.log("Making Request");
         axios.get(`http://127.0.0.1:5000/users`)
             .then(res => {
                 const data = res.data;
                 setData(data.data);
+                setShow(false);
             })
     }, []);
 
@@ -79,6 +84,14 @@ function App() {
 
         <div>
             <table className="mid">
+            <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+                timeout={3000} //3 secs
+                visible={show}
+            />
                 <tr>
                     <th>Firstname</th>
                     <th>Lastname</th>
@@ -99,6 +112,8 @@ function App() {
 
                 </table>
         </div>
+
+        
         </React.Fragment>
   );
 }
