@@ -16,9 +16,9 @@ def get_access_token():
 
     params = {
         'grant_type': 'refresh_token',
-        'client_id': '1000.JJUC3ODSMPUMKXP4APEWJN9NT9LTZB',
-        'client_secret': 'bc8a43aaccc033ae95860d0b2db9a46ee8777eb2cb',
-        'refresh_token': '1000.5121016c92d607f08eebc8b8e8091ee6.adf13963fc1959c05fd2c86a819371e1'
+        'client_id': 'client_id',
+        'client_secret': 'client_secret',
+        'refresh_token': 'refresh_token'
     }
     
     response = requests.post(url=url, params=params)
